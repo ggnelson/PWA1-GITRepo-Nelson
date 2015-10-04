@@ -5,7 +5,23 @@
  Assignment 1
  Part 1/3 of series
 */
-
+//Pseudo code
+//Inform User that a fight has begun
+    //Show user The names and player health variable
+    //Begin loop or Fight function for up to ten rounds
+        //use math random to get characters to do damage to each other
+        //If character health reaches zero
+            //end loop and announce player with health left as winner
+        //Else
+            //loop continues to next round and announces new round along with remaining health of players
+        //If both players reach zero
+            //end loop and announce that both players lose
+        //Else
+            //loop continues to next round and announces new round along with remaining health of players
+        //If bother players have health remaining at round 10
+            //end loop and announce that the battle ends at a draw
+    //End of loop
+//End of battle
 // self-executing function
 (function(){
 
@@ -26,6 +42,7 @@
     //initiate round
     var round=0;
 
+    //function equation loop to have the fight begin
     function fight(){
         alert(playerOneName+":"+playerOneHealth+"  *START*  "+playerTwoName+":"+playerTwoHealth);
         for (var i = 0; i < 10; i++)
@@ -42,7 +59,7 @@
 
             console.log(playerOneName+": "+playerOneHealth + " " + playerTwoName+":"+playerTwoHealth);
 
-            //check for victor
+            //check for winner
             var result = winnerCheck();
             console.log(result);
             if (result==="no winner")
@@ -58,21 +75,27 @@
           };
     };
 
+    //function for checking if someone is the winner or not
     function winnerCheck(){
+        //no winner if bother players are still alive after round 10
         var result="no winner";
         if (playerOneHealth<1 && playerTwoHealth<1)
         {
             result = "You Both Die";
-        } else if(playerOneHealth<1){
+        }
+        //condition if player two wins
+        else if(playerOneHealth<1){
             result =playerTwoName+" WINS!!!"
-        } else if (playerTwoHealth<1)
+        }
+        //condition id player one wins
+        else if (playerTwoHealth<1)
         {
             result = playerOneName+" WINS!!!"
         };
        return result;
     };
 
-    /*******  The program gets started below *******/
+    //the program begins
     fight();
 
 })();
