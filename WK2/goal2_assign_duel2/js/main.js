@@ -1,9 +1,8 @@
 /**
- * Duel Fight Game - FINISHED
- * Date: 4/09/13
+ * Duel Fight Week 2
+ * Gilbert Nelson
 
- Assignment 1
- Part 1/3 of series
+ Assn. 2
 */
 //Pseudo code
 //Inform User that a fight has begun
@@ -30,26 +29,26 @@
     //player array
     var playerOne = ["Spiderman", 20, 100];
     var playerTwo = ["Batman", 20, 100];
-
+    
     //initiate round
     var round=0;
 
     //function equation loop to have the fight begin
     function fight(){
-        alert(playerOneName+":"+playerOneHealth+"  *START*  "+playerTwoName+":"+playerTwoHealth);
+        alert(playerOne[0]+":"+playerOne[2]+"  *START*  "+playerTwo[0]+":"+playerTwo[2]);
         for (var i = 0; i < 10; i++)
         {
             //random formula is - Math.floor(Math.random() * (max - min) + min);
-            var minDamage1 = player1Damage * .5;
-            var minDamage2 = player2Damage * .5;
-            var f1 = Math.floor(Math.random()*(player1Damage-minDamage1)+minDamage1);
-            var f2 = Math.floor(Math.random()*(player2Damage-minDamage2)+minDamage2);
+            var minDamage1 = playerOne[1] * .5;
+            var minDamage2 = playerTwo[1] * .5;
+            var f1 = Math.floor(Math.random()*(playerOne[1]-minDamage1)+minDamage1);
+            var f2 = Math.floor(Math.random()*(playerTwo[1]-minDamage2)+minDamage2);
 
             //inflict damage
-            playerOneHealth-=f1;
-            playerTwoHealth-=f2;
+            playerOne[2]-=f1;
+            playerTwo[2]-=f2;
 
-            console.log(playerOneName+": "+playerOneHealth + " " + playerTwoName+":"+playerTwoHealth);
+            console.log(playerOne[0]+": "+playerOne[2] + " " + playerTwo[0]+":"+playerTwo[2]);
 
             //check for winner
             var result = winnerCheck();
@@ -57,7 +56,7 @@
             if (result==="no winner")
             {
                 round++;
-                alert(playerOneName+":"+playerOneHealth+"  *ROUND "+round+" OVER"+"*  "+playerTwoName+":"+playerTwoHealth);
+                alert(playerOne[0]+":"+playerOne[2]+"  *ROUND "+round+" OVER"+"*  "+playerTwo[0]+":"+playerTwo[2]);
 
             } else{
                 alert(result);
@@ -71,18 +70,18 @@
     function winnerCheck(){
         //no winner if bother players are still alive after round 10
         var result="no winner";
-        if (playerOneHealth<1 && playerTwoHealth<1)
+        if (playerOne[2]<1 && playerTwo[2]<1)
         {
             result = "You Both Die";
         }
         //condition if player two wins
-        else if(playerOneHealth<1){
-            result =playerTwoName+" WINS!!!"
+        else if(playerOne[2]<1){
+            result =playerTwo[0]+" WINS!!!"
         }
         //condition id player one wins
-        else if (playerTwoHealth<1)
+        else if (playerTwo[2]<1)
         {
-            result = playerOneName+" WINS!!!"
+            result = playerOne[0]+" WINS!!!"
         };
        return result;
     };
